@@ -1,10 +1,12 @@
-let sample_input = [];
+let arr_input = [];
+let newArr = []; // store real nunmber
 
 document.getElementById("btnThemSo").onclick = function () {
   let item = document.getElementById("inputSo").value * 1;
-  sample_input.push(item);
+  arr_input.push(item);
+  newArr.push(item);
   document.getElementById("arrayDisplay").innerHTML = `
-    <h6>${sample_input}</h6>
+    <h6>${arr_input}</h6>
       `;
 };
 
@@ -59,6 +61,7 @@ function sumPosNum(arrPos) {
   return sum;
 }
 document.getElementById("tinhTong").onclick = function () {
+  let sample_input = [...arr_input];
   let posArr = getNum(sample_input);
   let sum = sumPosNum(posArr);
   document.getElementById("hienThiTong").innerHTML = `
@@ -68,6 +71,7 @@ document.getElementById("tinhTong").onclick = function () {
 
 // Number of positive number
 document.getElementById("demSo").onclick = function () {
+  let sample_input = [...arr_input];
   let posArr = getNum(sample_input);
   document.getElementById("hienThiTongSoDuong").innerHTML = `
     <h6>${posArr.length}</h6>
@@ -76,6 +80,7 @@ document.getElementById("demSo").onclick = function () {
 
 // Min of arr
 document.getElementById("timMin").onclick = function () {
+  let sample_input = [...arr_input];
   let min = sortMinToMax(sample_input)[0];
   document.getElementById("hienThiSoNhoNhat").innerHTML = `
     <h6>${min}</h6>
@@ -84,8 +89,8 @@ document.getElementById("timMin").onclick = function () {
 
 //Min of positive numbers
 document.getElementById("timDuongNhoNhat").onclick = function () {
+  let sample_input = [...arr_input];
   let min = sortMinToMax(getNum(sample_input))[0];
-  console.log(min);
   document.getElementById("hienThiSoDuongNhoNhat").innerHTML = `
     <h6>${min}</h6>
       `;
@@ -101,6 +106,7 @@ function lastEvenNum(arrNum) {
   return -1;
 }
 document.getElementById("timSoChan").onclick = function () {
+  let sample_input = [...arr_input];
   let even_num = lastEvenNum(sample_input);
   document.getElementById("hienThiSoChan").innerHTML = `
     <h6>${even_num}</h6>
@@ -109,12 +115,14 @@ document.getElementById("timSoChan").onclick = function () {
 
 // Swap number
 function swapNum(arrNum, position1, position2) {
-  temp = arrNum[position2];
+  let temp = arrNum[position2];
   arrNum[position2] = arrNum[position1];
   arrNum[position1] = temp;
+
   return arrNum;
 }
 document.getElementById("swap").onclick = function () {
+  let sample_input = [...arr_input];
   let pos1 = document.getElementById("soThu1").value * 1;
   let pos2 = document.getElementById("soThu2").value * 1;
   let newArray = swapNum(sample_input, pos1, pos2);
@@ -125,6 +133,7 @@ document.getElementById("swap").onclick = function () {
 
 //Sort min to max
 document.getElementById("sapXep").onclick = function () {
+  let sample_input = [...arr_input];
   let sortedArr = sortMinToMax(sample_input);
   document.getElementById("hienThiChuoiTang").innerHTML = `
     <h6>${sortedArr}</h6>
@@ -141,6 +150,7 @@ function firstPrimeNum(arrNum) {
   return -1;
 }
 document.getElementById("timSoNguyenTo").onclick = function () {
+  let sample_input = [...arr_input];
   let num = firstPrimeNum(sample_input);
   document.getElementById("hienThiSoNguyenTo").innerHTML = `
     <h6>${num}</h6>
@@ -148,9 +158,7 @@ document.getElementById("timSoNguyenTo").onclick = function () {
 };
 
 //Number of integer
-let newArr = [];
 document.getElementById("themSoThuc").onclick = function () {
-  newArr = sample_input;
   let item = document.getElementById("inputSoThuc").value * 1;
   newArr.push(item);
   document.getElementById("hienThiNguyenThuc").innerHTML = `
@@ -177,6 +185,7 @@ function comparePosNa(arrNum) {
   }
 }
 document.getElementById("soSanh").onclick = function () {
+  let sample_input = [...arr_input];
   document.getElementById("hienThiThongTin").innerHTML = `
     <h6>${comparePosNa(sample_input)}</h6>
       `;
